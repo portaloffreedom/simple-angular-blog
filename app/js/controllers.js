@@ -42,6 +42,20 @@ blogApp.controller('createCtrl', ['$scope', function ($scope) {
     '<img src="http://placehold.it/'+$scope.dimensions+'"/>');
   }
   
+  var download = function(filename, data) {
+    filename = filename || "post-anonimous.txt";
+    var encodedUri = encodeURI(data);
+    var link = document.createElement("a");
+    link.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodedUri);
+    link.setAttribute("target",'_blank');
+    link.setAttribute("download", filename);
+
+    document.body.appendChild(link);
+    console.log("downloading data");
+    link.click();
+    document.body.removeChild(link);
+  };
+
   $scope.save = function() {
     var data = {
       title: titleMedium.value(),
@@ -50,5 +64,7 @@ blogApp.controller('createCtrl', ['$scope', function ($scope) {
     
     console.log("printing data");
     console.dir(data);
+
+    download("post-"+Date.now()+"-"+data.title+".txt", angular.toJson(data));
   }
 }]);
