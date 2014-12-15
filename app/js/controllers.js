@@ -59,12 +59,13 @@ blogApp.controller('createCtrl', ['$scope', function ($scope) {
   $scope.save = function() {
     var data = {
       title: titleMedium.value(),
-      body: articleMedium.value()
+      body: articleMedium.value(),
+      created: Date.now()
     }
     
     console.log("printing data");
     console.dir(data);
 
-    download("post-"+Date.now()+"-"+data.title+".txt", angular.toJson(data));
+    download("post-"+data.created+"-"+data.title+".txt", angular.toJson(data));
   }
 }]);
