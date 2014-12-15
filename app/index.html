@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" ng-app="blogApp">
+<head>
+  <meta charset="utf-8">
+  <title>Chicchi di strade</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="bower_components/medium.js/medium.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/medium.js/medium.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/services.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+
+  <div id="wrapper">
+
+    <div class="container">
+      <div class="row title-box">
+        <div class="col-md-12">
+          <h1>chicchi<span class="text-green">di</span>strade</h1>
+          <h4>memories experiences life</h4>
+        </div>
+      </div>
+
+      <div class="row main-box">
+        <div class="col-md-10">
+          <!--Body content-->
+
+
+          <div ng-repeat='post in posts'>
+            <blog-entry post='post'></blog-entry>
+          </div>
+
+        </div>
+        <div ng-hide="true" class="col-md-2">
+          <!--Sidebar content-->
+
+          Search: <input ng-model="query">
+          Sort by:
+          <select ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+          </select>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="push"></div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>footer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

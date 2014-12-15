@@ -1,0 +1,23 @@
+
+<button ng-click="richInsert()">TEST</button><textarea ng-model="dimensions"></textarea>
+<div id="article" class="article demo"></div>
+
+<script>
+  var article = document.getElementById('article'),
+  articleMedium = new Medium({
+      element: article,
+      mode: Medium.richMode,
+      placeholder: 'Your Article 2',
+      attributes: null,
+      tags: null
+  });
+  
+  $scope.dimensions = "350x150";
+
+  $scope.richInsert = function() {
+    console.log("porco dio");
+    articleMedium.focus();
+    articleMedium.insertHtml(
+    '<img src="http://placehold.it/'+$scope.dimensions+'"/>');
+  }
+</script>
